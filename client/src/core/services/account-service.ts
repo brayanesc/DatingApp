@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class AccountService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
-  
+
   currentUser = signal<User | null>(null);
 
   register(creds: RegisterCreds) {
@@ -19,7 +19,7 @@ export class AccountService {
         if (user) {
           this.setCurrentUser(user);
         }
-      })
+      }),
     );
   }
 
@@ -29,7 +29,7 @@ export class AccountService {
         if (user) {
           this.setCurrentUser(user);
         }
-      })
+      }),
     );
   }
 
@@ -41,5 +41,6 @@ export class AccountService {
   logout() {
     this.currentUser.set(null);
     localStorage.removeItem('user');
+    localStorage.removeItem('filters');
   }
 }
