@@ -35,6 +35,10 @@ export const loadingInterceptor: HttpInterceptorFn = (req, next) => {
     invalidateCache('/messages');
   }
 
+  if (req.method.includes('POST') && req.url.includes('/logout')) {
+    cache.clear();
+  }
+
   if (req.method === 'GET') {
     const cacheResponse = cache.get(cacheKey);
     if (cacheResponse) {

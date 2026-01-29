@@ -11,11 +11,19 @@ import { PaginatedResult } from '../../types/pagination';
 export class LikesService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
-  
+
   likeIds = signal<string[]>([]);
 
   toggleLike(targetMemberId: string) {
-    return this.http.post(`${this.baseUrl}likes/${targetMemberId}`, {});
+    return this.http.post(`${this.baseUrl}likes/${targetMemberId}`, {}).subscribe({
+      next: () => {
+        if (this.likeIds().includes(targetMemberId)) {
+          this.likeIds.update((ids) => ids.filter((x) => x !== targetMemberId));
+        } else {
+          this.likeIds.update((ids) => [...ids, targetMemberId]);
+        }
+      },
+    });
   }
 
   getLikes(likeParams: LikeParams) {
