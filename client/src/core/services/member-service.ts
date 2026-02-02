@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { EditableMember, Member, MemberParams, Photo } from '../../types/member';
+import { EditableMember, Member, MemberParams } from '../../types/member';
+import { Photo } from '../../types/photo';
 import { tap } from 'rxjs/operators';
 import { PaginatedResult } from '../../types/pagination';
 
