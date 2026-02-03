@@ -14,7 +14,6 @@ export class Home {
   protected accountService = inject(AccountService)
 
   showRegister(value: boolean) {
-    console.log('Toggling register mode to:', value);
     this.registerMode.set(value);
   }
 }

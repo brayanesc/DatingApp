@@ -37,7 +37,7 @@ public class TokenService(IConfiguration config, UserManager<AppUser> userManage
             Subject = new ClaimsIdentity(claims),
             NotBefore = now, // Had to add this to handle issuing errors
             IssuedAt = now,
-            Expires = now.AddMinutes(7),
+            Expires = now.AddDays(15),
             SigningCredentials = creds
         };
         var tokenHandler = new JwtSecurityTokenHandler();

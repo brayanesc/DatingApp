@@ -44,7 +44,6 @@ export class ImageUpload {
   }
 
   onUploadFile() {
-    console.log('this.fileToUpload', this.fileToUpload);
     if (this.fileToUpload) {
       this.uploadFile.emit(this.fileToUpload);
     }
